@@ -3,7 +3,7 @@ import argparse
 from datetime import datetime
 
 from env import DmControlEnvForPytorch, GymEnvForPyTorch
-from agent import SlacAgent
+from latent_model_trainer import LatentTrainer
 
 
 def run():
@@ -60,7 +60,7 @@ def run():
         'logs', args.env_type, dir_name,
         f'slac-seed{args.seed}-{datetime.now().strftime("%Y%m%d-%H%M")}')
 
-    agent = SlacAgent(env=env, log_dir=log_dir, **configs)
+    agent = LatentTrainer(env=env, log_dir=log_dir, **configs)
     agent.run()
 
 
